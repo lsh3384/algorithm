@@ -8,7 +8,6 @@ member.sort()
 print(member)
 group = 0
 count = 0
-tmp_group = 0
 
 for i in member:
     count += 1
