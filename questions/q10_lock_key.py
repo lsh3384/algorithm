@@ -40,7 +40,11 @@ def solution(key, lock):
     # 하 좌
     # 하 우
 
-
+    # 시계방향 90도씩 3번 돌리면서
+    # 상, 하, 좌, 우 n -1 번씩 옮기면서
+    # lock과 일치 여부 확인
+    # 일치하면 answer = True
+    # answer 디폴트는 False
 
     answer = True
     return answer
