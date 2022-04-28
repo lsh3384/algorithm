@@ -5,28 +5,97 @@ def turn(key, n):
             tmp[j][n-1-i] = key[i][j]
     return tmp
 
+def up(tmp, n):
+    for i in range(n):
+        for j in range(n):
+            if i != n-1:
+                tmp[i][j] = tmp[i+1][j]
+            else:
+                tmp[i][j] = 0
+    return tmp
+
+def down(tmp):
+    for i in range(n):
+        for j in range(n):
+            if i < n-1:
+                if i == 0:
+                    tmp[i+1][j] = tmp[i][j]
+                    tmp[i][j] = 0
+                else:
+                    tmp[i+1][j] = tmp[i][j]
+    return tmp
+
+
+def left(tmp, n):
+    for i in range(n):
+        for j in range(n):
+            if j < n-1:
+                tmp[i][j] = tmp[i][j + 1]
+            else:
+                tmp[i][j] = 0
+    return tmp
+
+def right(tmp, n):
+    for i in range(n):
+        for j in range(n-1, -1, -1):
+            if j == 0:
+                tmp[i][j] = 0
+            else:
+                tmp[i][j] = tmp[i][j - 1]
+    return tmp
 
 def solution(key, lock):
+    original_key = key
     # 키 90도 돌리기
     n = len(key)
 
     turn_array = []
     print(key)
 
-
+    # 90도씩 돌려서 4개의 키 모양 저장해놓기
     for i in range(4):
         turn_array.append(key)
         key = turn(key, n)
+        if key == original_key:
+            return True
 
     print(turn_array)
 
+    # 출력해보기
     for i in turn_array:
         for j in range(n):
             for k in range(n):
                 print(i[j][k], end=' ')
             print()
         print()
-        
+
+
+    mid_array = []
+    for i in range(3):
+        tmp = turn_array[i]
+        for _ in range(i):
+            tmp = left(tmp, n)
+        mid_array.append(tmp)
+        if tmp == original_key:
+            return True
+
+    for i in range(3):
+        tmp = turn_array[i]
+        for _ in range(i):
+            right(tmp, n)
+        mid_array.append(tmp)
+        if tmp == original_key:
+            return True
+
+    for i in range(3):
+        tmp = mid_array[i]
+        for _ in range(i):
+            up(tmp, n)
+
+
+
+
+    # 일치 불일치 판별
     for new_key in turn_array:
         if key == new_key:
             print('일치')
