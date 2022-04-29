@@ -14,7 +14,7 @@ def up(tmp, n):
                 tmp[i][j] = 0
     return tmp
 
-def down(tmp):
+def down(tmp, n):
     for i in range(n):
         for j in range(n):
             if i < n-1:
@@ -56,7 +56,7 @@ def solution(key, lock):
     for i in range(4):
         turn_array.append(key)
         key = turn(key, n)
-        if key == original_key:
+        if key == lock:
             return True
 
     print(turn_array)
@@ -71,33 +71,29 @@ def solution(key, lock):
 
 
     mid_array = []
+
+    mid_array
     for i in range(3):
         tmp = turn_array[i]
-        for _ in range(i):
+        for _ in range(1):
             tmp = left(tmp, n)
         mid_array.append(tmp)
-        if tmp == original_key:
+        if tmp == lock:
             return True
-
-    for i in range(3):
-        tmp = turn_array[i]
-        for _ in range(i):
-            right(tmp, n)
-        mid_array.append(tmp)
-        if tmp == original_key:
-            return True
-
-    for i in range(3):
-        tmp = mid_array[i]
-        for _ in range(i):
-            up(tmp, n)
-
+    print(mid_array)
+    # 출력해보기
+    for i in mid_array:
+        for j in range(n):
+            for k in range(n):
+                print(i[j][k], end=' ')
+            print()
+        print()
 
 
 
     # 일치 불일치 판별
     for new_key in turn_array:
-        if key == new_key:
+        if key == lock:
             print('일치')
         else:
             print('불일치')
