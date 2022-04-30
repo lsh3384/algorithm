@@ -8,8 +8,9 @@ def rotation(arr):
             ret[j][n-1-i] = arr[i][j]
     return ret
 
-# 자물쇠가 열리는지 췍
+# 자물쇠가 열리는지 체크
 def check(startX, startY, key, lock, expendSize, start, end):
+    # 자물쇠를 확장함(핵심 개념)
     expendList = [[0] * expendSize for _ in range(expendSize)]
 
     # expendList에 key 추가
@@ -31,7 +32,7 @@ def solution(key, lock):
     end = start + len(lock)  # expendList에서 lock이 끝나는 지점
     expendSize = len(lock) + start * 2  # expendList 배열의 크기
 
-    # lock은 고정이고 key가 움직이는거!!!
+    # lock은 고정이고 key가 움직이면서 체크
     for a in range(0, 4):
         for i in range(end):
             for j in range(end):
