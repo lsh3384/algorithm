@@ -4,7 +4,8 @@ from sys import stdin
 cards = []
 result = 0
 
-for i in range(int(stdin.readline())):
+N = range(int(stdin.readline()))
+for i in N:
     heapq.heappush(cards, int(stdin.readline()))
 
 if len(cards) == 1:
