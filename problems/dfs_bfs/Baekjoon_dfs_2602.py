@@ -23,8 +23,11 @@ def dfs(start):
     # 1) 첫번째 노드 방문처리
     visited[start] = 1
     for i in graph[start]:
+        # 2) 방문하지 않은 노드라면
         if visited[i] == 0:
+            # 3) 다시 dfs 하면 됨
             dfs(i)
+            # 4) 방문하지 않은 노드를 만날 때마다 + 1씩 해줌
             cnt += 1
 
 # 문제에 컴퓨터는 1번부터 시작한다고 되어있기 때문에 dfs(1)을 넣음
