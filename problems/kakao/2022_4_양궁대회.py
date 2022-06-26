@@ -44,6 +44,7 @@ def bfs(n, info):
     return res
 
 
+
 def solution(n, info):
     winList = bfs(n, info)
 
