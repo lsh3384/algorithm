@@ -1,14 +1,27 @@
+import heapq
+import sys
+input = sys.stdin.readline
+INF = int(1e9)
 
-graph = [
-    [],
-    []
-]
-visited = []
+n, m = map(int, input())
+start = int(input())
+graph = [[] for i in range(n + 1)]
+distance = [INF] * (n + 1)
 
-def dfs(graph, v, visited):
-    visited[v] = True
-    for i in graph[v]:
-        if not visited[v]:
-            dfs(graph, i, visited)
+for i in range(m):
+    a, b,c = map(input().split())
+    graph[a].append((b, c))
 
-dfs(graph, 1, visited)
+def dijkstra(start):
+    q = []
+    heapq.heappush(q, (0, start))
+    distance[start] = 0
+    while q:
+        dist, now = heapq.heappop(q)
+        if distance[now] < dist:
+            continue
+        for i in graph[now]:
+            cost = dist + i[1]
+            if cost < distance[i[0]]:
+                distance[i[0]] = cost
+                heapq.heappush(q, (cost, i[0]))
