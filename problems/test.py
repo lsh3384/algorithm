@@ -19,3 +19,16 @@ def quick_sort(array, start, end):
 
     quick_sort(array, start, right -1)
     quick_sort(array, right + 1, end)
+
+def binary_search_recursive(array, target, start, end):
+    if start > end:
+        return None
+
+    mid = (start + end) // 2
+    if array[mid] == target:
+        return mid
+
+    if array[mid] > target:
+        return binary_search(array, target, start, mid - 1)
+    else:
+        return binary_search(array, target, mid + 1, end)
