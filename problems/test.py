@@ -128,3 +128,27 @@ def quick_sort(array, start, end):
 
     quick_sort(array, start, right - 1)
     quick_sort(array, right + 1, end)
+
+
+def count_sort(array):
+    count = [0] * (len(array) + 1)
+    for i in range(len(array)):
+        count[array[i]] += 1
+
+    for i in range(len(count)):
+        for j in range(count[i]):
+            print(i, end=' ')
+
+
+
+d = [0] * 99
+
+def fibo_recursive(array, x):
+    if x == 1 or x == 2:
+        return 1
+    if array[x] != 0:
+        return array[x]
+    array[x] = fibo_recursive(array, x - 1) + fibo_recursive(array, x - 2)
+    return array[x]
+
+print(fibo_recursive(d, 50))

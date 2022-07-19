@@ -1,24 +1,28 @@
+def solution(n, k):
+    word = ""
+    while n:
+        word = str(n % k) + word
+        n = n // k
+    word = word.split("0")
+
+    print(word)
+    count = 0
+    for w in word:
+        sosu = True
+        if len(w) == 0:
+            continue
+        if int(w) < 2:
+            continue
+
+        for i in range(2, int(int(w) ** 0.5) + 1):
+            if int(w) % i == 0:
+                sosu = False
+                break
+
+        if sosu:
+            count += 1
+
+    return count
 
 
-id_list = ["muzi", "frodo", "apeach", "neo"]
-report = ["muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"]
-k = 2
-
-def solution(id_list, report, k):
-    dict_report = {}
-    for i in id_list:
-        dict_report[i] = set()
-
-    for j in report:
-        a, b = j.split()
-        dict_report[b].add(a)
-
-    answer = [0 for _ in range(len(id_list))]
-
-    for v in dict_report.values():
-        if len(v) >= k:
-            for name in v:
-                answer[id_list.index(name)] += 1
-    return answer
-
-print(solution(id_list, report, k))
+print(solution(110011, 10))
