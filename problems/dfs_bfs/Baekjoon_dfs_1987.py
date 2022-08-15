@@ -24,4 +24,5 @@ def dfs(x,y,cnt):
 check[ord(arr[0][0])-65]=1
 dfs(0,0,1)
 
+
 print(maxi)
