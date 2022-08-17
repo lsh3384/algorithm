@@ -1,24 +1,17 @@
+# 참고: https://castlerain.tistory.com/100
+
 import sys
+input = sys.stdin.readline
 
-N, M = map(int, sys.stdin.readline().split())
+n, m = map(int, input().split())
+data = [list(map(int, input().split())) for _ in range(n)]
+sum_data = [[0] * (n+1) for i in range(n+1)]
 
-table = []
-for _ in range(N):
-    table.append(list(map(int, sys.stdin.readline().split())))
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        sum_data[i][j] = sum_data[i][j-1] + sum_data[i-1][j] - sum_data[i-1][j-1] + data[i-1][j-1]
 
-coordinates = []
-for _ in range(M):
-    coordinates.append(list(map(int, sys.stdin.readline().split())))
+for _ in range(m):
+    x1, y1, x2, y2 = map(int, input().split())
 
-# print(N, M)
-# print(table)
-# print(coordinates)
-
-sum = []
-for coordi in coordinates:
-    tmp = 0
-    for i in range(coordi[0], coordi[2]+1):
-        for j in range(coordi[1], coordi[3]+1):
-            # print(i, j)
-            tmp += table[i-1][j-1]
-    print(tmp)
+    print(sum_data[x2][y2] - sum_data[x1-1][y2] - sum_data[x2][y1-1] + sum_data[x1-1][y1-1])
