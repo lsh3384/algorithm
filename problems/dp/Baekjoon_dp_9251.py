@@ -1,4 +1,4 @@
-# 출처:
+# 출처:https://bgspro.tistory.com/134
 word1 = input()
 word2 = input()
 
