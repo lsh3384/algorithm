@@ -42,7 +42,7 @@ arr = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
 dx = [1, 0, 0]
 dy = [0, 1, -1]
 
-# dp : 현재 (x, y)에서 이전 방향이 z였을 때 얻을 수 있는 최대값을 저장하는 상태 공간
+# Dynamic_Programming : 현재 (x, y)에서 이전 방향이 z였을 때 얻을 수 있는 최대값을 저장하는 상태 공간
 dp = [[[-1] * 4 for _ in range(m)] for _ in range(n)]
 
 # 정답 출력

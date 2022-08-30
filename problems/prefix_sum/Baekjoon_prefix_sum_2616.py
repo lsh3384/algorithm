@@ -26,6 +26,6 @@ for n in range(1, 4):
         # 점화식
         else:
             dp[n][m] = max(dp[n][m - 1], dp[n - 1][m - limit] + S[m] - S[m - limit])
-        # print_dp(dp)
+        # print_dp(Dynamic_Programming)
 
 print(dp[3][N])
